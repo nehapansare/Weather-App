@@ -1,0 +1,73 @@
+<style>
+  
+  body {
+    background-color: #0056b3;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    
+  }
+
+  .container {
+    max-width: 400px;
+    text-align: center;
+    margin:  60px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(10, 9, 5, 0.4);
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+
+
+  input {
+    width: 80%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+button {
+  padding: 10px 15px;
+  background: linear-gradient(45deg, #ff4b2b, #ff416c, #007bff); 
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff9a00); 
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+</style>
+
+<div class="container">
+  <h1>Weather App</h1>
+  <input type="text" [(ngModel)]="city" placeholder="Enter city name">
+  <button (click)="getWeather()">Get Weather</button>
+
+  <div *ngIf="weather">
+    <h2>{{ weather.name }}, {{ weather.sys.country }}</h2>
+    <p>Temperature: {{ weather.main.temp }}°C</p>
+    <p>Condition: {{ weather.weather[0].description }}</p>
+    <p>Humidity: {{ weather.main.humidity }}%</p>
+    <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
+  </div>
+</div>
